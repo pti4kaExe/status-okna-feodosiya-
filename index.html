@@ -141,54 +141,131 @@
             color: white; /* Цвет текста */
         }
         
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .product-card {
-            background-color: #8ED69B; /* Цвет заливки */
-            border-radius: 5px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .product-title {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: black; /* Черный цвет текста */
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7); /* Объемный эффект */
-        }
-        
-        .product-price {
-            font-weight: bold;
-            color: black; /* Черный цвет текста */
-            margin-bottom: 15px;
-        }
-        
-        .btn-order {
-            display: inline-block;
-            background: linear-gradient(to right, #ffffff, #1d7333); /* Градиентный белый цвет */
-            color: black;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .btn-order:hover {
-            background: linear-gradient(to right, #e0e0e0, #ffffff); /* Градиентный белый цвет при наведении */
-        }
+        /* Исправляем выравнивание карточек */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background-color: #8ED69B;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 25px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 350px; /* Фиксированная минимальная высота */
+    height: 100%;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.product-icon {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: #2E4B2B;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.product-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: black;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+    flex-shrink: 0;
+}
+
+.product-description {
+    margin-bottom: 20px;
+    color: #333;
+    line-height: 1.5;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.product-price {
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.btn-order {
+    display: inline-block;
+    background: linear-gradient(to right, #ffffff, #1d7333);
+    color: black;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+}
+
+.btn-order:hover {
+    background: linear-gradient(to right, #e0e0e0, #ffffff);
+}
+
+/* Гарантируем одинаковую высоту для всех карточек */
+.product-card {
+    height: auto;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .product-card {
+        min-height: 320px;
+        padding: 20px 15px;
+    }
+    
+    .product-icon {
+        font-size: 32px;
+        height: 50px;
+        margin-bottom: 15px;
+    }
+    
+    .product-title {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    .product-description {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .product-price {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+    .btn-order {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
         
         /* Преимущества */
         .advantages {
@@ -581,11 +658,16 @@
         </div>
     </section>
 <!-- Продукция -->
+<!-- Продукция -->
 <section id="products" class="products">
     <div class="container">
         <h2 class="section-title">Наша продукция</h2>
         <div class="products-grid">
+            <!-- Пластиковые окна -->
             <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-window-maximize"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Пластиковые окна</h3>
                     <p class="product-description">Энергосберегающие окна из высококачественного ПВХ с многокамерными профилями.</p>
@@ -594,7 +676,11 @@
                 </div>
             </div>
             
+            <!-- Алюминиевые окна -->
             <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-border-all"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Алюминиевые окна</h3>
                     <p class="product-description">Прочные и легкие конструкции для балконов, террас и коммерческих помещений.</p>
@@ -603,7 +689,11 @@
                 </div>
             </div>
             
+            <!-- Входные двери -->
             <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-door-closed"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Входные двери</h3>
                     <p class="product-description">Надежные металлические двери с усиленной защитой и шумоизоляцией.</p>
@@ -612,7 +702,11 @@
                 </div>
             </div>
 
+            <!-- Раздвижные системы -->
             <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Раздвижные системы</h3>
                     <p class="product-description">Эстетичные и функциональные раздвижные системы для вашего дома.</p>
@@ -621,7 +715,11 @@
                 </div>
             </div>
 
+            <!-- Балконы/Утепление -->
             <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-house-user"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Балконы/Утепление балконов</h3>
                     <p class="product-description">Комплексные решения для утепления и обустройства балконов.</p>
@@ -630,25 +728,44 @@
                 </div>
             </div>
 
+            <!-- Рулонные шторы -->
             <div class="product-card">
+                <div class="product-icon">
+    <i class="fas fa-border-none"></i>
+</div>
+                <div class="product-icon">
+                    <i class="fas fa-blinds"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Рулонные шторы</h3>
                     <p class="product-description">Стильные рулонные шторы для любого интерьера.</p>
-                    <p class="product-price">from 2 000 руб.</p>
+                    <p class="product-price">от 2 000 руб.</p>
                     <a href="#order-form" class="btn-order">Заказать</a>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-info">
-                    <h3 class="product-title">Жалюзи</h3>
-                    <p class="product-description">Разнообразные жалюзи для контроля света и приватности.</p>
-                    <p class="product-price">от 1 500 руб.</p>
-                    <a href="#order-form" class="btn-order">Заказать</a>
-                </div>
-            </div>
+            <!-- Жалюзи -->
+<div class="product-card">
+    <div class="product-icon">
+        <i class="fas fa-th-large"></i> <!-- Работающая иконка -->
+    </div>
+    <div class="product-info">
+        <div>
+            <h3 class="product-title">Жалюзи</h3>
+            <p class="product-description">Разнообразные жалюзи для контроля света и приватности.</p>
+        </div>
+        <div>
+            <p class="product-price">от 1 500 руб.</p>
+            <a href="#order-form" class="btn-order">Заказать</a>
+        </div>
+    </div>
+</div>
 
+            <!-- Роллеты -->
             <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Роллеты</h3>
                     <p class="product-description">Эффективная защита от солнца и посторонних глаз.</p>
@@ -657,7 +774,11 @@
                 </div>
             </div>
 
+            <!-- Москитные сетки -->
             <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-mosquito"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Москитные сетки</h3>
                     <p class="product-description">Защита от насекомых для вашего комфорта.</p>
@@ -666,7 +787,11 @@
                 </div>
             </div>
 
+            <!-- Ремонт -->
             <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
                 <div class="product-info">
                     <h3 class="product-title">Ремонт</h3>
                     <p class="product-description">Качественный ремонт окон и дверей с гарантией.</p>
@@ -828,7 +953,7 @@
                 
                 <div class="contact-form">
                     <h3>Напишите нам</h3>
-                    <form action="https://formspree.io/f/xwpbrpld" method="POST">
+                    <form action="https://formspree.io/f/xwpbrpld" method="POST"> -->
                         <div class="form-group">
                             <label for="name">Ваше имя</label>
                             <input type="text" id="name" name="name" required>
@@ -914,7 +1039,6 @@
         });
     </script>
 </body>
-
 </html>
 
 
